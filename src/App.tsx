@@ -38,18 +38,19 @@ function App() {
   }
 
   const startMusic = () => {
-    setPlaying(true)
-    audioRef.current?.play().catch(() => {})
-  }
+  audioRef.current?.play()
+}
 
-  const stopMusic = () => {
-    const audio = audioRef.current
-    if (!audio) return
+const pauseMusic = () => {
+  audioRef.current?.pause()
+}
 
-    audio.pause()
-    audio.currentTime = 0
-    setPlaying(false)
-  }
+const stopMusic = () => {
+  if (!audioRef.current) return
+  audioRef.current.pause()
+  audioRef.current.currentTime = 0
+}
+
 
   return (
     <div className="app-container">
@@ -63,7 +64,12 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route
           path="/timer"
-          element={<Timer onStart={startMusic} onStop={stopMusic} />}
+          element={<Timer
+  onStart={startMusic}
+  onPause={pauseMusic}
+  onStop={stopMusic}
+/>
+}
         />
       </Routes>
     </div>

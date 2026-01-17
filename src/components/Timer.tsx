@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 
 type TimerProps = {
   onStart: () => void
+  onPause: () => void
   onStop: () => void
 }
+
 
 function formatTime(totalSeconds: number) {
   const m = Math.floor(totalSeconds / 60)
@@ -11,7 +13,7 @@ function formatTime(totalSeconds: number) {
   return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
 }
 
-function Timer({ onStart, onStop }: TimerProps) {
+function Timer({ onStart, onPause, onStop }: TimerProps) {
   const [inputMinutes, setInputMinutes] = useState<string>('25')
   const [secondsLeft, setSecondsLeft] = useState<number>(25 * 60)
   const [running, setRunning] = useState<boolean>(false)
@@ -50,18 +52,19 @@ function Timer({ onStart, onStop }: TimerProps) {
   }
 
   const toggle = () => {
-    setRunning((r) => {
-      const next = !r
+  setRunning((r) => {
+    const next = !r
 
-      if (next) {
-        onStart() // ▶️ start music
-      } else {
-        onStop()  // ⏸ pause music
-      }
+    if (next) {
+      onStart()   // ▶ resume / start
+    } else {
+      onPause()   // ⏸ pause ONLY
+    }
 
-      return next
-    })
-  }
+    return next
+  })
+}
+
 
   const reset = () => {
     const mins = Math.max(0, Math.floor(Number(inputMinutes) || 0))
