@@ -12,18 +12,18 @@ export type SoundChoice =
   | "white"
 
 export const SOUND_SOURCES: Record<SoundChoice, string[]> = {
-  rain: ["/timeblind/misc/rain.mp3"],
-  ocean: ["/timeblind/misc/waves.mp3"],
-  campfire: ["/timeblind/misc/fireplace.mp3"],
+  rain: ["/misc/rain.mp3"],
+  ocean: ["/misc/waves.mp3"],
+  campfire: ["/misc/fireplace.mp3"],
 
-  brown: ["/timeblind/noise/Brown.mp3"],
-  pink: ["/timeblind/noise/Pink.mp3"],
-  white: ["/timeblind/noise/White.mp3"],
+  brown: ["/noise/Brown.mp3"],
+  pink: ["/noise/Pink.mp3"],
+  white: ["/noise/White.mp3"],
 
   lofi: [
-    '/timeblind/lofi/lofi1.mp3',
-    '/timeblind/lofi/lofi2.mp3',
-    '/timeblind/lofi/lofi3.mp3',
+    '/lofi/lofi1.mp3',
+    '/lofi/lofi2.mp3',
+    '/lofi/lofi3.mp3',
   ],
 
   silence: [],
